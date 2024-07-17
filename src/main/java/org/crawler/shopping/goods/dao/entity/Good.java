@@ -1,4 +1,4 @@
-package org.crawler.shopping.goods.model.entity;
+package org.crawler.shopping.goods.dao.entity;
 
 
 import jakarta.persistence.*;
@@ -10,8 +10,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
 
 @Setter
 @Getter

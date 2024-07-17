@@ -1,4 +1,4 @@
-package org.crawler.shopping.goods.model.repo;
+package org.crawler.shopping.goods.dao.repo;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import org.crawler.shopping.goods.model.entity.Good;
+import org.crawler.shopping.goods.dao.entity.Good;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
