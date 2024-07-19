@@ -14,6 +14,5 @@ public class IconCategory {
     @Column(name = "categoryId", nullable = false)
     private Long categoryId;
 
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "iconCategory")
-    private List<Icon> icons;
+    private Long iconId;
 }

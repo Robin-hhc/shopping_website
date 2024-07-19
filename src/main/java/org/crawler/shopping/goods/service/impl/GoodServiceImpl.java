@@ -12,7 +12,7 @@ public class GoodServiceImpl implements GoodService {
     GoodRepository goodRepository;
 
     @Override
-    public List<Good> findAllGoodSvc() {
+    public List<Good> getAllGoodSvc() {
         List<Good> goods = goodRepository.findAll();
         return goods;
     }

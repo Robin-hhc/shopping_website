@@ -22,7 +22,24 @@ public class IconTest {
     public void testOne2ManyWithoutFetchJoin() {
         List<IconCategory> iconCategories = iconCategoryRepository.findAll();
         IconCategory iconCategory = iconCategories.get(0);
-        List<Icon> icons = iconCategory.getIcons();
-        assertThat(icons.size()).isEqualTo(1);
+//        List<Icon> icons = iconCategory.getIcons();
+//        assertThat(icons.size()).isEqualTo(1);
+//        assertThat(icons.get(0).getId()).isEqualTo(1);
+//        assertThat(icons.get(0).getValue()).isEqualTo("&#xe600;");
+    }
+
+    @Test
+    void testOne2ManyFetchJoin(){
+       List<IconCategory> iconCategoryList = iconCategoryRepository.fetchCategoryAndIcons();
+       IconCategory iconCategory = iconCategoryList.get(0);
+//       List<Icon> icons = iconCategory.getIcons();
+//       assertThat(icons.size()).isEqualTo(1);
+//       assertThat(icons.get(0).getId()).isEqualTo(1);
+//       assertThat(icons.get(0).getValue()).isEqualTo("&#xe600;");
+    }
+
+    @Test
+    void testNoRelJoin(){
+        List<IconCategory> iconCategoryList = iconCategoryRepository.fetchCategoryAndIcons();
     }
 }
