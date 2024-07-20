@@ -3,6 +3,10 @@ package org.crawler.shopping.category.dao.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.crawler.shopping.icon.dao.entity.Icon;
+import org.crawler.shopping.icon.dao.entity.IconCategory;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -13,4 +17,9 @@ public class Category {
     @Column(name = "id", nullable = false)
     private Long id;
     private String name;
+
+//    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "category")
+//    private List<IconCategory> iconCategories;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    private List<Icon> icons;
 }

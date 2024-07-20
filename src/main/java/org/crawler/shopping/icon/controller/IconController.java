@@ -7,6 +7,7 @@ import org.crawler.shopping.icon.dao.dto.IconDto;
 import org.crawler.shopping.icon.service.IconService;
 import org.crawler.shopping.utils.Result;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/icon")
+@RequestMapping("/api/icon")
 @CrossOrigin
 public class IconController {
     @Resource
     private IconService iconService;
 
+    @GetMapping
     public Result findAll() {
         List<IconDto> iconDtos = iconService.getAllIconWithCategories();
         List<IconViewBean> iconViewBeans = new ArrayList<>();

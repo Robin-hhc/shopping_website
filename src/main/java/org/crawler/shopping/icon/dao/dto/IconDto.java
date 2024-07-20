@@ -7,7 +7,7 @@ public class IconDto {
     private Long categoryId;
     private Long iconId;
     private String value;
-    private String categoryName;
+    private String categoryName = null;
     public IconDto(Long categoryId, Long iconId, String value) {
         this.categoryId = categoryId;
         this.iconId = iconId;
