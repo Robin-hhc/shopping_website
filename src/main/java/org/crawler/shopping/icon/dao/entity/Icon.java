@@ -18,9 +18,4 @@ public class Icon {
     private Long id;
 
     private String value;
-
-//    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "icon")
-//    private List<IconCategory> iconCategories;
-    @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "icons")
-    private List<Category> categories;
 }

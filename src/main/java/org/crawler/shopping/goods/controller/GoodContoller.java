@@ -1,35 +1,54 @@
 package org.crawler.shopping.goods.controller;
 
+import jakarta.annotation.Resource;
 import org.crawler.shopping.goods.controller.para.GoodPara;
+import org.crawler.shopping.goods.dao.entity.Good;
+import org.crawler.shopping.goods.service.GoodService;
+import org.crawler.shopping.utils.Result;
+import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/good")
+@RequestMapping("/api/good")
 @CrossOrigin
 public class GoodContoller {
+  @Resource
+  GoodService goodService;
 
   @GetMapping
-  public String allGoods() {
+  public Result findAllGoods() {
     System.out.println("findAllGoods");
-    return "findAllGoods";
+    List<Good> goodList = goodService.findAllGoodSvc();
+    return Result.ok().data("items", goodList);
   }
 
-  @GetMapping("/searchById")
-  public Long searchByIdParameter(@RequestParam Long id) {
-    System.out.println("searchById");
-    return id;
+  @GetMapping("/findGoodById")
+  public Result searchByIdParameter(@RequestParam Long goodId) {
+    System.out.println("searchByIdWithParameter");
+    Good good = goodService.findGoodById(goodId);
+    return Result.ok().data("item", good);
   }
 
   @GetMapping("/{goodId}")
-  public Long searchByIdVariable(@PathVariable Long goodId) {
-    System.out.println(goodId);
-    return goodId;
+  public Result searchByIdVariable(@PathVariable Long goodId) {
+    System.out.println("searchByIdWithPathVariable");
+    Good good = goodService.findGoodById(goodId);
+    return Result.ok().data("item", good);
   }
 
   @PostMapping("/addGood")
-  public GoodPara addGood(@RequestBody @Validated GoodPara para) {
-    System.out.println(para);
-    return para;
+  public Result addGood(@RequestBody @Validated GoodPara para) {
+    System.out.println("addGood");
+    return Result.ok();
+  }
+
+  @PostMapping("/page")
+  public Result getAllGoodsWithPageNumAndSize(@RequestBody @Validated GoodPara para) {
+    System.out.println("getAllGoodsWithPageNumAndSize");
+    Page<Good> goodList = goodService.getAllGoods(para.getPageNum(), para.getPageSize(), para.getCategoryId());
+    return Result.ok().data("items", goodList);
   }
 }

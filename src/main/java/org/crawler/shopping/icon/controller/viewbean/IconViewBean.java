@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 public class IconViewBean {
-    private Long iconId;
     private String value;
     private List<Category> categories;
 }

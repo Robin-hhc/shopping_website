@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -23,22 +24,33 @@ public class IconController {
 
     @GetMapping
     public Result findAll() {
-        List<IconDto> iconDtos = iconService.getAllIconWithCategories();
+        List<IconDto> iconDtos = iconService.getIconCategoriesList();
         List<IconViewBean> iconViewBeans = new ArrayList<>();
+        HashMap<String, List<Category>> temMap = new HashMap<>();
         for (IconDto iconDto : iconDtos) {
             IconViewBean iconViewBean = new IconViewBean();
-            iconViewBean.setIconId(iconDto.getIconId());
             iconViewBean.setValue(iconDto.getValue());
 
             Category temp = new Category();
             temp.setId(iconDto.getCategoryId());
             temp.setName(iconDto.getCategoryName());
-            List<Category> categories = new ArrayList<>();
-            categories.add(temp);
-            iconViewBean.setCategories(categories);
 
+            if (temMap.containsKey(iconDto.getValue())) {
+                temMap.get(iconDto.getValue()).add(temp);
+            } else {
+                List<Category> tempList = new ArrayList<>();
+                tempList.add(temp);
+                temMap.put(iconDto.getValue(), tempList);
+            }
+        }
+
+        for (String key:
+             temMap.keySet()) {
+            IconViewBean iconViewBean = new IconViewBean();
+            iconViewBean.setCategories(temMap.get(key));
+            iconViewBean.setValue(key);
             iconViewBeans.add(iconViewBean);
         }
-        return Result.ok().data("items", iconViewBeans);
+        return Result.ok().data("item", iconViewBeans);
     }
 }

@@ -5,5 +5,5 @@ import org.crawler.shopping.icon.dao.dto.IconDto;
 import java.util.List;
 
 public interface IconService {
-    List<IconDto> getAllIconWithCategories();
+    List<IconDto> getIconCategoriesList();
 }

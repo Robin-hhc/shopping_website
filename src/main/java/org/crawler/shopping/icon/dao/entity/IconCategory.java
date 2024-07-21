@@ -15,14 +15,5 @@ public class IconCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iconCategoryId;
-
-//    private Long categoryId;
-//
-//    private Long iconId;
-
-//    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, optional = false)
-//    private Icon icon;
-//
-//    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, optional = false)
-//    private Category category;
+    private Long iconId;
 }

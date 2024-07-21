@@ -35,5 +35,4 @@ public class Good {
   private Boolean recommend;
   private Boolean isDelete;
   private BigDecimal price;
-
 }

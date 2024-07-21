@@ -14,8 +14,7 @@ public class IconServiceImpl implements IconService {
     IconRepository iconRepository;
 
     @Override
-    public List<IconDto> getAllIconWithCategories() {
-//        return iconRepository.getIconWithCategoryInfo();
-        return null;
+    public List<IconDto> getIconCategoriesList() {
+        return iconRepository.getIconAndCategoryInfo();
     }
 }
