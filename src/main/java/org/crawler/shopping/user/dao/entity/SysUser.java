@@ -12,7 +12,7 @@ public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Long id;
     private String username;
 
     @JsonIgnore

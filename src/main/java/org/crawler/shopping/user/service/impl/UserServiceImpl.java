@@ -5,6 +5,7 @@ import org.crawler.shopping.config.ServiceException;
 import org.crawler.shopping.user.dao.entity.SysUser;
 import org.crawler.shopping.user.dao.repo.SysUserRepository;
 import org.crawler.shopping.user.service.UserService;
+import org.crawler.shopping.constants.Constant;
 
 public class UserServiceImpl implements UserService {
     @Resource
@@ -14,7 +15,7 @@ public class UserServiceImpl implements UserService {
     public SysUser register(String username, String password) {
 
         if (sysUserRepository.findByUsername(username) != null) {
-            throw new ServiceException(Constants.CODE_403,"Username is used by another user");
+            throw new ServiceException(Constant.CODE_403,"Username is used by another user");
         } else {
             SysUser sysUser = new SysUser();
             sysUser.setUsername(username);
@@ -34,7 +35,7 @@ public class UserServiceImpl implements UserService {
         return sysUserRepository.findById(id).get();
     }
 
-    public SysUser findSysUserByName(String username) {
+    public SysUser findUserByName(String username) {
         return sysUserRepository.findByUsername(username);
     }
 }

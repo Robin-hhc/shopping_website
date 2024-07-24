@@ -1,5 +1,7 @@
 package org.crawler.shopping.constants;
 
+import org.crawler.shopping.utils.PathUtils;
+
 public class Constant {
     public static final String CODE_200 = "200";//success
     public static final String CODE_500 = "500";//system error

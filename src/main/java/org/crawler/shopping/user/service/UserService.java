@@ -7,4 +7,6 @@ public interface UserService {
     SysUser login(String username, String password);
 
     SysUser findUserById(Long id);
+
+    SysUser findUserByName(String username);
 }
