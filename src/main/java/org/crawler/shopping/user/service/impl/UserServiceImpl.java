@@ -6,7 +6,9 @@ import org.crawler.shopping.user.dao.entity.SysUser;
 import org.crawler.shopping.user.dao.repo.SysUserRepository;
 import org.crawler.shopping.user.service.UserService;
 import org.crawler.shopping.constants.Constant;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Resource
     SysUserRepository sysUserRepository;
@@ -14,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public SysUser register(String username, String password) {
 
-        if (sysUserRepository.findByUsername(username) != null) {
+        if (sysUserRepository.findByUsernameEquals(username) != null) {
             throw new ServiceException(Constant.CODE_403,"Username is used by another user");
         } else {
             SysUser sysUser = new SysUser();
@@ -36,6 +38,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public SysUser findUserByName(String username) {
-        return sysUserRepository.findByUsername(username);
+        return sysUserRepository.findByUsernameEquals(username);
     }
 }

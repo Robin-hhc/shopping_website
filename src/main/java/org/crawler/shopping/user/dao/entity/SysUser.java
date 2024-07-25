@@ -1,13 +1,14 @@
 package org.crawler.shopping.user.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Entity
+@Getter
+@Setter
 public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
