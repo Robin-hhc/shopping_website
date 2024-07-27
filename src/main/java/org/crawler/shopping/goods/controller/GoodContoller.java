@@ -4,6 +4,7 @@ import jakarta.annotation.Resource;
 import org.crawler.shopping.goods.controller.para.GoodPara;
 import org.crawler.shopping.goods.dao.entity.Good;
 import org.crawler.shopping.goods.service.GoodService;
+import org.crawler.shopping.utils.Page4Navigator;
 import org.crawler.shopping.utils.Result;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
@@ -48,7 +49,7 @@ public class GoodContoller {
   @PostMapping("/page")
   public Result getAllGoodsWithPageNumAndSize(@RequestBody @Validated GoodPara para) {
     System.out.println("getAllGoodsWithPageNumAndSize");
-    Page<Good> goodList = goodService.getAllGoods(para.getPageNum(), para.getPageSize(), para.getCategoryId());
+    Page4Navigator<Good> goodList = goodService.getAllGoods(para.getPageNum(), para.getPageSize(), para.getCategoryId());
     return Result.ok().data("items", goodList);
   }
 }
